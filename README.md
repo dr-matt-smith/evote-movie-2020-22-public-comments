@@ -1,4 +1,4 @@
-# evote-movie-2020-21-dotenv-constants
+# evote-movie-2020-22-public-comments
 
 
 Let's add a feature allowing public (non-logged-in) users to post comments on the movie list page.
