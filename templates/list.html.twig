@@ -1,0 +1,81 @@
+{% extends '_base.html.twig' %}
+
+{% block listLinkStyle %}current_page{% endblock %}
+
+{% block title %}movie list{% endblock %}
+
+{% block main %}
+<!-- start table for displaying MOVIE details -->
+    <h2>Lists of movies and their average votes</h2>
+
+    <table>
+        <tr>
+            <th> ID </th>
+            <th> title </th>
+            <th> category </th>
+            <th> price </th>
+            <th> vote average </th>
+            <th> num votes </th>
+            <th> stars </th>
+
+            {% if session.username is defined %}
+                <th> (EDIT) </th>
+                <th> (DELETE) </th>
+            {% endif %}
+        </tr>
+
+        {% for movie in movies %}
+        <tr>
+            <td>{{ movie.id }}</td>
+            <td>{{ movie.title }}</td>
+            <td>{{ movie.category }}</td>
+            <td>&euro; {{ movie.price | number_format(2, '.', ',') }}</td>
+            <td>{{ movie.voteAverage }} %</td>
+            <td>{{ movie.numVotes }}</td>
+            <td>
+                {% if movie.numVotes > 0 %}
+                    <img src="images/{{ movie.starImage }}" alt="star image for percentage">
+                {% else %}
+                    (no votes yet)
+                {% endif %}
+            </td>
+
+            {% if session.username is defined %}
+                <td>
+                    <a href="/index.php?action=editMovie&id={{ movie.id }}">
+                        EDIT
+                    </a>
+                </td>
+                <td>
+                    <a href="/index.php?action=deleteMovie&id={{ movie.id }}">
+                        DELETE
+                    </a>
+                </td>
+            {% endif %}
+        </tr>
+        {% endfor %}
+
+    </table>
+
+    {% if session.username is defined %}
+        <a href="/index.php?action=newMovieForm">CREATE a new movie</a>
+    {% endif %}
+
+    <form method="post" action="/"  id="commentForm">
+        <h2>Add a comment:</h2>
+        <input type="hidden" name="action" value="processComment">
+        <textarea name="comment" cols="75" rows="5"></textarea >
+        <input type="submit">
+    </form>
+
+    {# -------- loop to display comments as list items, if array size > 0 --------#}
+    {% if comments|length > 0 %}
+        <h2>Comments</h2>
+        <ul>
+            {% for comment in comments %}
+                <li>{{ comment.comment }}</li>
+            {% endfor %}
+        </ul>
+    {% endif %}
+
+{% endblock %}

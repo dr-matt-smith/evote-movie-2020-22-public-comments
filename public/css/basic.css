@@ -1,0 +1,38 @@
+body {
+	background: #CCFFCC;
+}
+
+header {
+    text-align: center;
+}
+
+/* ------- DVD table contents --------- */
+table, th, td, tr {
+    border: solid black 0.1rem
+}
+
+td {
+    width: 7rem;
+    text-align: center;
+}
+
+.error {
+    background-color: pink;
+    padding: 1rem;
+}
+
+input[readonly] {
+    background-color: grey;
+    color: yellow;
+}
+
+#login {
+    text-align: right;
+}
+
+#commentForm {
+    border: 0.1rem solid black;
+    margin: 1rem;
+    padding: 1rem;
+    background-color: lightblue;
+}

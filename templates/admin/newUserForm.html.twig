@@ -1,0 +1,24 @@
+{% extends '_base.html.twig' %}
+
+{% block title %}new user{% endblock %}
+
+{% block main %}
+    <h1>
+        New User
+    </h1>
+
+    <form action="/" method="post">
+        <input type="hidden" name="action" value="processNewUser">
+        <input type="hidden" name="module" value="admin">
+
+        <p>
+            username:
+            <input name="username">
+        <p>
+            password:
+            <input name="password">
+        <p>
+            <input type="submit">
+    </form>
+
+{% endblock %}

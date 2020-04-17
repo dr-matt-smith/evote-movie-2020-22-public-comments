@@ -1,0 +1,33 @@
+{% extends '_base.html.twig' %}
+
+{% block mapLinkStyle %}current_page{% endblock %}
+
+{% block title %}site map{% endblock %}
+
+{% block main %}
+<h1>
+    Site Map
+</h1>
+
+<ul>
+    <li>
+        <a href="/">Home</a>
+    </li>
+
+    <li>
+        <a href="/index.php?action=about">About Us</a>
+    </li>
+
+    <li>
+        <a href="/index.php?action=list">Movie ratings</a>
+    </li>
+
+    <li>
+        <a href="/index.php?action=contact">Contact Us</a>
+    </li>
+
+    <li>
+        <a href="/index.php?action=sitemap">Site Map</a>
+    </li>
+</ul>
+{% endblock %}

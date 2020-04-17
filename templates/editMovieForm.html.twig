@@ -1,0 +1,35 @@
+{% extends '_base.html.twig' %}
+
+{% block title %}new movie{% endblock %}
+
+{% block main %}
+    <h1>
+        EDIT Movie
+    </h1>
+
+    <form action="/" method="post">
+        <input type="hidden" name="action" value="processEditMovie">
+
+        <p>
+            Id:
+            <input name="id" value="{{ movie.id }}" readonly>
+        <p>
+            Title:
+            <input name="title" value="{{ movie.title }}">
+        <p>
+            Category:
+            <input name="category" value="{{ movie.category }}">
+        <p>
+            Price:
+            <input name="price" value="{{ movie.price }}">
+        <p>
+            Total votes:
+            <input name="voteTotal" value="{{ movie.voteTotal }}">
+        <p>
+            Num votes:
+            <input name="numVotes" value="{{ movie.numVotes }}">
+        <p>
+            <input type="submit">
+    </form>
+
+{% endblock %}

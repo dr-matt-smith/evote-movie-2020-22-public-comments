@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <title>EVOTE MOVIE - {% block title %}{% endblock %}</title>
+    <meta charset="utf-8">
+    <style>
+        @import "/css/basic.css";
+        @import "/css/nav.css";
+        @import "/css/footer.css";
+    </style>
+</head>
+<body>
+
+<div id="login">
+    {% if session.username is defined %}
+        You are logged in as: <b>{{ session.username }}</b>,
+        <a href="/index.php?action=logout">logout</a>
+
+        {% if session.role == 'ROLE_ADMIN' %}
+            <br>
+            <a href="/index.php?action=newUserForm&module=admin">CREATE new user</a>
+        {% endif %}
+
+    {% else %}
+        <a href="/index.php?action=login">login</a>
+    {% endif %}
+</div>
+
+<header>
+    <img src="/images/smithit_logo.gif" alt="logo">
+</header>
+
+<nav>
+    <ul>
+        <li>
+            <a href="/" class="{% block homeLinkStyle %}{% endblock %}">Home</a>
+        </li>
+
+        <li>
+        <a href="/index.php?action=about" class="{% block aboutLinkStyle %}{% endblock %}">About Us</a>
+        </li>
+
+        <li>
+            <a href="/index.php?action=list" class="{% block listLinkStyle %}{% endblock %}">Movie ratings</a>
+        </li>
+
+        <li>
+            <a href="/index.php?action=contact" class="{% block contactLinkStyle %}{% endblock %}">Contact Us</a>
+        </li>
+
+        <li>
+            <a href="/index.php?action=sitemap" class="{% block mapLinkStyle %}{% endblock %}">Site Map</a>
+        </li>
+    </ul>
+</nav>
+
+{% block main %}
+{% endblock %}
+
+<footer>
+    2020 &copy; A Matt Smith productions international enterprises limited production
+</footer>
+
+</body>
+</html>
